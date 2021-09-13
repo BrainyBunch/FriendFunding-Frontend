@@ -5,58 +5,51 @@ import {Route, Link} from 'react-router-dom'
 import { useState, useEffect } from "react";
 // Import Components
 import Home from "./components/Home"
-// 
+import SideNav from "./components/SideNav";
+import SpecificUser from './components/SpecificUser';
+import SpecificGoal from './components/SpecificGoal'
+import EditUser from './components/EditUser'
+import EditGoal from './components/EditGoal'
+import NewUser from './components/NewUser'
+//
 
-const userGoals = [
-  {
-    id: 1,
-    name: 'Vic',
-    goal: 'Japan',
-    description: 'First time to Japan',
-    amountsaved: '575'
-  },
-  {
-    id: 2,
-    name: 'Jeff',
-    goal: 'Italy',
-    description: 'Flores',
-    amountsaved: '560',
-  },
-  {
-    id: 3,
-    name: 'Ynna',
-    goal: 'Costa Rica',
-    description: 'Vacation',
-    amountsaved: '575',
-  },
-  {
-    id: 4,
-    name: 'Billie',
-    goal: 'Boston',
-    description: 'Visit Will',
-    amountsaved: '198',
-  },
-]
-
-
-function App() {
+function App(props, state) {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:8000/`)
       .then((res) => res.json())
-      .then((data) => setUserData(data));
+      // .then(res => console.log(res))
+
+      .then((data) => setUserData(data))
+      // .then(res=> console.log(res))
+
   }, []);
-  return (
+
+
+  return (<div>
+    
+
     <div className="App">
-      <main>      
+      <main>
+        {/* <SideNav name='Jonathan' width={wid} closeNav={closeSidenav}/>        */}
         <Route exact path="/" render={()=><Home users={userData}/>}    /> 
-        {/* <Route exact path="/user/new" render={() => <NewUser />}/>
-        <Route exact path="/user/show/:name" render={routerProps => <UserDetail match={routerProps.match}/>}/>
-        <Route exact path="/user/edit/:id" render={routerProps => <EditUser match={routerProps.match}/>}/> */}
+
+        <Route exact path="/user/new" render={() => <NewUser users={userData}/>}/>
+        <Route exact path="/user/:name" render={routerProps => <SpecificUser match={routerProps.match} users={userData}/>}/>
+
+        <Route exact path="/goal/new" render={() => <NewUser users={userData}/>}/>
+        <Route exact path="/goal/:id" render={routerProps => <SpecificGoal match={routerProps.match} users={userData}/>}/>
+
+        {/* ---------------------------- */}
+        <Route exact path="/user/edit/:id" render={routerProps => <EditUser match={routerProps.match}/>}/>
+        <Route exact path="/goal/edit/:id" render={routerProps => <EditGoal match={routerProps.match} users={userData}/>}/>
+        {/* ---------------------------- */}
+        <SideNav exact path ="/SideNav" render={()=><SideNav users={userData}/>} />
+
       {/* <LoginForm /> */}
     </main>
-    </div>
+    </div></div>
   );
 }
 
