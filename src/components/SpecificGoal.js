@@ -1,18 +1,19 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 
-const SpecificGoal = ({Goals, match, setNewGoal, GoalData}) => {
-    const GoalDetail = Goals.filter(Goal=> Goal.name === match.params.name)[0]
+// const SpecificGoal = ({goals, match, setNewGoal, GoalData}) => {
+//     const GoalDetail = goals.filter(goal=> goal. === match.params.)[0]
     
-    return (
-        <div class="specified">  
-            <h1 id='goalHead'>{GoalDetail.name}</h1>
-            <h1>{GoalDetail.description}.</h1>
-            <h1>{GoalDetail.cost}.</h1>
-            <h1>{GoalDetail.amountsaved}</h1>
-        </div>
-    )
-}
+//     return (
+//         <div class="">  
+//             <h1 id=''>{GoalDetail.title}</h1>
+//             <h1>{GoalDetail.description}.</h1>
+//             <h1>{GoalDetail.user}.</h1>
+//             <h1>{GoalDetail.amountsaved}</h1>
+//             <h1>{GoalDetail.cost}</h1>
+//         </div>
+//     )
+// }
 
-export default SpecificGoal
+// export default SpecificGoal

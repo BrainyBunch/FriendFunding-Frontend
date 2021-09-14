@@ -4,11 +4,12 @@ import axios from "axios";
 import { Redirect, useHistory } from "react-router-dom";
 // import "../App.css";
 
-const Goal = ({setInput, input, props}) => {
+const NewGoal = ({setInput, input, props}) => {
   console.log(setInput)
   console.log(input)
 
   const initialState = { title: "", description: "", cost: "", amountSaved: "", user: input.data.id};
+  // add user name if goal.user== username then goal.user =
   const [GoalState, setGoalState] = useState(initialState);
 
   const [status, setStatus] = useState("failed");
@@ -104,4 +105,4 @@ const Goal = ({setInput, input, props}) => {
   );
 };
 
-export default Goal;
+export default NewGoal;

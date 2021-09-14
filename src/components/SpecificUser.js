@@ -6,6 +6,7 @@ const SpecificUser = ({users, match, setNewUser, userData}) => {
     
     return (
         <div class="specified">  
+            <h1>Done for all intensive purposes</h1>
             <h1 id='userHead'>{userDetail.name}</h1>
             <h1>{userDetail.description}.</h1>
             <h1>{userDetail.amountsaved}</h1>

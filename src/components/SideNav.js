@@ -21,11 +21,12 @@ import '../App.css';
 
 const sidenav = (props, state) => {
     return (
-        <div className='SideNav'>
+        <div className='SideNasssv'>
 
-        <a href='/'>Home</a>
-        <a href='/user_list'>Users</a>
-        <a href='/goal_list'>Goals</a>
+        <p><a href='/'>Home</a></p>
+        <p><a href='/users'>Users</a></p>
+        <p><a href='/new'>New Users</a></p>
+        <p><a href='/goal'>Goals</a></p>
 
         </div>
     );

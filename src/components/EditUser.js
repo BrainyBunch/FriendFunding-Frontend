@@ -11,11 +11,11 @@ function Edit() {
 
     const [name, setName] = useState(null)
     const [description, setDescription] = useState(null)
-    const [amountSaved, setAmountSaved] = useState(null)
+    const [amountsaved, setAmountsaved] = useState(null)
 
     useEffect(() => {
         loadUsers();
-    }, [])
+    }, []);
 
     let loadUsers = async () => {
         const result = await axios.get(`http://localhost:8000/user/${id}`);
@@ -23,21 +23,21 @@ function Edit() {
 
         setName(result.data.name);
         setDescription(result.data.description);
-        setAmountSaved(result.data.amountSaved);
+        setAmountsaved(result.data.amountsaved);
        }
-    const updateSingleUser = async () => {
+    const updateUser = async () => {
         let formField = new FormData()
 
         formField.append('name',name)
         formField.append('description',description)
-        formField.append('amountSaved',amountSaved)
-        if(name !== null) {
-          formField.append('name', name)
-        }
+        formField.append('amountsaved',amountsaved)
+        // if(name !== null) {
+        //   formField.append('name', name)
+        // }
 
         await axios({
             method: 'PUT',
-            url: `http://127.0.0.1:8000/user/${id}/`,
+            url: `http://localhost:8000/user/${id}`,
             data: formField
         }).then(response => {
             console.log(response.data);
@@ -47,6 +47,38 @@ function Edit() {
 
     return (
         <div>
+            <h1>Done for all intensive purposes</h1>
+            <div className="form-group">
+                <input
+                    type="text"
+                    // className="form-control form-control-lg"
+                    placeholder="Enter Your Name"
+                    name="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+      </div>
+            <div className="form-group">
+                <input
+                    type="description"
+                    className="form-control form-control-lg"
+                    placeholder="Description"
+                    name="description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                />
+            </div>
+            <div className="form-group">
+                <input
+                    type="text"
+                    className="form-control form-control-lg"
+                    placeholder="How Much You've Saved So Far"
+                    name="amountsaved"
+                    value={amountsaved}
+                    onChange={(e) => setAmountsaved(e.target.value)}
+                />
+      </div>
+      <button onClick={updateUser} className="btn btn-primary btn-block">Update User</button>
 
             
 
